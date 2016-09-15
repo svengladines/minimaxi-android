@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="be.occam.android.minimaxi">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="be.occam.android.minimaxi">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <uses-feature android:name="android.hardware.camera" android:required="true" />
+
         <activity
             android:name="be.occam.android.minimaxi.SplashActivity"
             android:label="Mini Maxi Splash">

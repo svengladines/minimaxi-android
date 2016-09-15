@@ -24,15 +24,15 @@ public class WelcomeActivity extends Activity {
             actor = "Daddy";
         }
 
-        TextView welcomeText
-                = (TextView) findViewById(R.id.welcomeText);
+        TextView actorText
+                = (TextView) findViewById(R.id.textActor);
 
-        welcomeText.setText( actor );
+        actorText.setText( actor );
 
         TextView downloadText
                 = (TextView) findViewById(R.id.downloadText);
 
-        downloadText.setText( "..." );
+        downloadText.setText( "." );
 
         new DownloadTask( downloadText ).execute();
 

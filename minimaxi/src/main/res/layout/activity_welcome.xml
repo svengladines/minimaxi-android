@@ -22,16 +22,38 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
-            android:textSize="32dp"
+            android:textSize="18sp"
             android:textColor="#ffffff"
             android:text="Welkom" />
 
-        <ImageView
-            android:id="@+id/imgLogo"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_gravity="center"
-            android:src="@drawable/babysplash" />
+        <TextView
+            android:id="@+id/textActor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textSize="48sp"
+            android:textColor="#ffffff"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/waitingText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+
+            android:text="Er wachten" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:visibility="visible"
+            android:background="@android:color/darker_gray"/>
 
         <TextView
             android:id="@+id/downloadText"
@@ -39,9 +61,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
-            android:textSize="32dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textSize="64dp"
             android:textColor="#ffffff"
             android:text="" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:visibility="visible"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:text="avonturen op je!" />
 
     </android.widget.LinearLayout>
 
