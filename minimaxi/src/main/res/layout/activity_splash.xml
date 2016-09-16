@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:background="#000000"
         android:transitionGroup="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#000000">
 
         <ImageView
             android:id="@+id/imgLogo"
@@ -28,8 +28,9 @@
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
             android:textSize="32dp"
-            android:textColor="#ffffff"
-            android:text="Mini Maxi" />
+            android:text="Mini Maxi"
+            android:visibility="visible"
+            android:textColor="@color/primary" />
 
     </android.widget.LinearLayout>
 

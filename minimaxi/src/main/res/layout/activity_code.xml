@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="be.occam.android.minimaxi.SplashActivity">
+    tools:context="be.occam.android.minimaxi.CodeActivity">
 
     <android.widget.LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:theme="@style/AppTheme.AppBarOverlay"
         android:background="#000000"
         android:transitionGroup="true"
         android:orientation="vertical">

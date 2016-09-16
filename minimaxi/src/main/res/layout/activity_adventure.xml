@@ -5,44 +5,80 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="be.occam.android.minimaxi.SplashActivity">
+    tools:context="be.occam.android.minimaxi.AdventureActivity">
 
     <android.widget.LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/AppTheme.AppBarOverlay"
+        android:gravity="center"
         android:background="#000000"
         android:transitionGroup="true"
-        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/welcomeText"
+            android:id="@+id/dateText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
+            android:layout_gravity="center_horizontal"
             android:textAlignment="center"
-            android:textSize="32dp"
+            android:textSize="18sp"
             android:textColor="#ffffff"
-            android:layout_marginBottom="32dp"
-            android:text="28/08/1977" />
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="dd/mm/yyyy" />
 
-        <ImageView
-            android:id="@+id/imgLogo"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_gravity="center"
-            android:src="@drawable/babysplash" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:visibility="visible"
+            android:background="@android:color/darker_gray"/>
 
         <TextView
+            android:id="@+id/titleText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center_horizontal"
             android:textAlignment="center"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textColor="#ffffff"
-            android:layout_marginTop="32dp"
-            android:text="Adventure" />
+            android:text="title" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:visibility="visible"
+            android:background="@android:color/darker_gray"/>
+
+        <ImageView
+            android:id="@+id/adventureImage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+             />
+
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:text="description" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/nextAdventureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:elevation="4dp"
+            app:backgroundTint="@color/accent">
+        </android.support.design.widget.FloatingActionButton>
+
 
     </android.widget.LinearLayout>
 

@@ -1,10 +1,14 @@
 package be.occam.android.minimaxi;
 
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.widget.TextView;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.io.InputStream;
+import java.net.URL;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,21 +17,17 @@ import static org.junit.Assert.assertEquals;
  */
 public class TestDownloadTask {
 
-    @BeforeClass
-    public static void initialize() {
-        System.setProperty("ro.build.version.sdk", "23");
-    }
-
     @Test
-    public void doesItSmoke() {
+    public void doesItSmoke() throws Exception {
 
+        URL url
+                = new URL( "http://www.debrodders.be/svekke/minimaxi/images/adventures/adventure-001.jpg" );
 
+        InputStream content
+                = (InputStream) url.openStream();
 
-        DownloadTask downloadTask
-                = new DownloadTask( null );
-
-        downloadTask.doInBackground();
-
+        Drawable drawable
+                = Drawable.createFromStream( content, "src" );
 
     }
 }

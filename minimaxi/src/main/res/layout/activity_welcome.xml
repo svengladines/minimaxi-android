@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="be.occam.android.minimaxi.SplashActivity">
+    tools:context="be.occam.android.minimaxi.WelcomeActivity">
 
     <android.widget.LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:theme="@style/AppTheme.AppBarOverlay"
         android:background="#000000"
         android:transitionGroup="true"
         android:orientation="vertical">
@@ -78,10 +77,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:textAlignment="center"
             android:textSize="16sp"
             android:textColor="#ffffff"
             android:text="avonturen op je!" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/firstAdventureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:elevation="4dp"
+            app:backgroundTint="@color/accent">
+        </android.support.design.widget.FloatingActionButton>
+
+
 
     </android.widget.LinearLayout>
 

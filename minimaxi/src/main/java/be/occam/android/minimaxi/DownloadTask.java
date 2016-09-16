@@ -23,9 +23,13 @@ import java.net.URL;
 class DownloadTask extends AsyncTask<String, String, Adventure[]> {
 
     protected final TextView callBackView;
+    protected final WelcomeActivity welcomeActivity;
 
-    public DownloadTask(TextView callBackView) {
+    public DownloadTask(TextView callBackView,WelcomeActivity welcomeActivity) {
+
         this.callBackView = callBackView;
+        this.welcomeActivity = welcomeActivity;
+
     }
 
     String result = "";
@@ -42,11 +46,12 @@ class DownloadTask extends AsyncTask<String, String, Adventure[]> {
 
         try {
 
-            if (result != null) {
-                callBackView.setText(String.format("%s", result.length));
-            } else {
+            if (result == null) {
                 callBackView.setText("e");
             }
+
+            welcomeActivity.adventuresDownLoaded( result );
+
         } catch( Exception e ) {
             callBackView.setText( e.getMessage() );
         }
