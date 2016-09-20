@@ -31,6 +31,10 @@
             android:name="be.occam.android.minimaxi.AdventureActivity"
             android:label="Mini Maxi Adventure">
         </activity>
+        <activity
+            android:name="be.occam.android.minimaxi.ImageActivity"
+            android:label="Mini Maxi Image">
+        </activity>
     </application>
 
 </manifest>
