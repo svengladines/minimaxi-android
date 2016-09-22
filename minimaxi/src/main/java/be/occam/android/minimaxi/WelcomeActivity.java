@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class WelcomeActivity extends Activity {
+public class WelcomeActivity extends AdventuresActivityBase {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -46,7 +46,7 @@ public class WelcomeActivity extends Activity {
         FloatingActionButton firstAdventureButton
                     = (FloatingActionButton) findViewById( R.id.firstAdventureButton );
 
-        final WelcomeActivity welcomeActivity
+        final AdventuresActivityBase adventuresActivity
                 = this;
 
         firstAdventureButton.setOnClickListener(new View.OnClickListener() {
@@ -57,17 +57,17 @@ public class WelcomeActivity extends Activity {
                 try {
 
                     Intent intent
-                            = new Intent(welcomeActivity, AdventureActivity.class);
+                            = new Intent(adventuresActivity, AdventureActivity.class);
 
-                    welcomeActivity.updateDownloadText( String.format("%s",welcomeActivity.getAdventures().length ) );
+                    adventuresActivity.updateDownloadText( String.format("%s",adventuresActivity.getAdventures().size() ) );
 
-                    if ( welcomeActivity .getAdventures() != null ) {
+                    if ( adventuresActivity.getAdventures() != null ) {
 
                         ArrayList<Adventure>
                                  adventures
                                 = new ArrayList<>();
 
-                        adventures.addAll( Arrays.asList(welcomeActivity.getAdventures() ) );
+                        adventures.addAll( adventuresActivity.getAdventures() );
 
                         intent.putParcelableArrayListExtra("adventures", adventures );
                         intent.putExtra("index",0);
@@ -75,17 +75,17 @@ public class WelcomeActivity extends Activity {
                         startActivity(intent);
                     }
                     else {
-                        welcomeActivity.updateDownloadText( "nl" );
+                        adventuresActivity.updateDownloadText( "nl" );
                     }
                 }
                 catch( Throwable e ) {
-                    welcomeActivity.updateDownloadText( e.getMessage() );
+                    adventuresActivity.updateDownloadText( e.getMessage() );
                 }
 
             }
         });
 
-        new DownloadTask( downloadText, welcomeActivity ).execute();
+        new DownloadTask( downloadText, adventuresActivity ).execute();
 
 
     }
@@ -103,16 +103,4 @@ public class WelcomeActivity extends Activity {
 
     }
 
-    public Adventure[] getAdventures() {
-        return adventures;
-    }
-
-    public void updateDownloadText( String text ) {
-
-        TextView downloadText
-                = (TextView) findViewById(R.id.downloadText);
-
-        downloadText.setText( text );
-
-    }
 }

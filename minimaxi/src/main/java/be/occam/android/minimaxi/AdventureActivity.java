@@ -82,10 +82,13 @@ public class AdventureActivity extends Activity {
 
                         try {
 
+                            String mediaURL
+                                    = new StringBuilder( "http://www.debrodders.be/svekke/minimaxi" ).append( "/media/adventures/images/").append( adventure.getMediaURL() ).toString();
+
                             Intent intent
                                     = new Intent(adventureActivity, ImageActivity.class);
 
-                            intent.putExtra("url", "http://www.debrodders.be/svekke/minimaxi/images/adventures/adventure-001.jpg"  );
+                            intent.putExtra("url", mediaURL );
 
                             startActivity(intent);
 

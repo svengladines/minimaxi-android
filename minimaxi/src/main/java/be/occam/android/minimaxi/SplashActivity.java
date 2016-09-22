@@ -14,9 +14,6 @@ import java.util.Properties;
 
 public class SplashActivity extends Activity {
 
-    final String FILENAME = "minimaxi.properties";
-    final String PROPERTY_CODE = "code";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -24,9 +21,8 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.activity_splash);
 
-
-        Properties properties
-                    = this.properties();
+        MiniMaxiProperties properties
+                    = new MiniMaxiProperties( this );
 
         if ( properties != null ) {
 
@@ -44,117 +40,21 @@ public class SplashActivity extends Activity {
             }
             else {
 
-                Intent intent = new Intent(this, WelcomeActivity.class);
+                try {
 
-                intent.putExtra( Actor.EXTRA, actor );
+                    Intent intent = new Intent(this, AdventuresActivity.class);
 
-                startActivity(intent);
+                    intent.putExtra(Actor.EXTRA, actor);
 
-            }
-
-        }
-
-    }
-
-    protected boolean createPropertyFile() {
-
-        FileOutputStream fileOutputStream
-                = null;
-
-        try {
-
-            fileOutputStream = openFileOutput( FILENAME, Context.MODE_PRIVATE );
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
-
-        return fileOutputStream != null;
-
-    }
-
-    protected FileOutputStream propertyFileForWriting() {
-
-        FileOutputStream fileOutputStream
-                = null;
-
-        try {
-
-            fileOutputStream = openFileOutput( FILENAME, Context.MODE_PRIVATE );
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
-
-        return fileOutputStream;
-
-    }
-
-    protected FileInputStream propertyFileForReading() {
-
-        FileInputStream fileInputStream
-                = null;
-
-        try {
-
-            fileInputStream = openFileInput( FILENAME );
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
-
-        return fileInputStream;
-
-    }
-
-    protected Properties properties() {
-
-        Properties properties
-                = null;
-
-        try {
-
-            FileInputStream fileInputStream
-                    = this.propertyFileForReading();
-
-            if (fileInputStream == null) {
-
-                boolean propertiesCreated
-                        = this.createPropertyFile();
-
-                if ( propertiesCreated ) {
-
-                    fileInputStream = this.propertyFileForReading();
-
+                    startActivity(intent);
                 }
-                else {
-                    Log.e("mini", "property file could not be created");
+                catch( Throwable e ) {
+                    Log.e( "failed to adventurize", e.getMessage() );
                 }
 
             }
 
-            if (fileInputStream != null) {
-                properties = new Properties();
-                properties.load( fileInputStream );
-            }
-            else {
-                Log.e("mini", "no fileinput, even after creation");
-            }
-
         }
-       catch (IOException e) {
-
-           Log.e( "splash", e.getMessage() );
-
-        }
-
-        return properties;
 
     }
 

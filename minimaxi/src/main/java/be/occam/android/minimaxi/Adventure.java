@@ -21,6 +21,7 @@ public class Adventure implements Parcelable {
                 adventure.setDescription( in.readString() );
                 adventure.setMedia( in.readString() );
                 adventure.setType( in.readString() );
+                adventure.setMediaURL( in.readString() );
 
                 return adventure;
 
@@ -37,6 +38,7 @@ public class Adventure implements Parcelable {
     protected String title;
     protected String description;
     protected String date;
+    protected String mediaURL;
 
     public Adventure() {
 
@@ -90,6 +92,14 @@ public class Adventure implements Parcelable {
         this.date = date;
     }
 
+    public String getMediaURL() {
+        return mediaURL;
+    }
+
+    public void setMediaURL(String mediaURL) {
+        this.mediaURL = mediaURL;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -102,6 +112,7 @@ public class Adventure implements Parcelable {
         dest.writeString( this.getDescription() );
         dest.writeString( this.getMedia() );
         dest.writeString( this.getType() );
+        dest.writeString( this.getMediaURL() );
     }
 
 }

@@ -13,10 +13,15 @@ public class CodeActivity extends Activity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
+    MiniMaxiProperties miniMaxiProperties;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code);
+
+        this.miniMaxiProperties
+                = new MiniMaxiProperties( this );
 
         EditText editText = (EditText) findViewById(R.id.textCode);
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -39,15 +44,21 @@ public class CodeActivity extends Activity {
         String code
             = view.getText().toString();
 
-        if ( "xxx".equals( code ) ) {
+        String actor
+                = "visitor";
 
-            Intent intent = new Intent(this, WelcomeActivity.class);
+        if ( "sdl001".equals( code ) ) {
 
-            intent.putExtra( Actor.EXTRA, "peter" );
-
-            startActivity(intent);
-
+            actor = "peter";
         }
+
+        this.miniMaxiProperties.setProperty( Actor.PROPERTY, actor );
+
+        Intent intent = new Intent(this, WelcomeActivity.class);
+
+        intent.putExtra( Actor.EXTRA, actor );
+
+        startActivity(intent);
 
 
     }

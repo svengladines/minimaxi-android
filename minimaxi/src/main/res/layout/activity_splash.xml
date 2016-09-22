@@ -1,4 +1,4 @@
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,13 +12,12 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:transitionGroup="true"
-        android:orientation="vertical"
-        android:background="#000000">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
+            android:layout_width="128sp"
+            android:layout_height="128sp"
             android:layout_gravity="center"
             android:src="@drawable/babysplash" />
 
@@ -28,10 +27,8 @@
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
             android:textSize="32dp"
-            android:text="Mini Maxi"
-            android:visibility="visible"
-            android:textColor="@color/primary" />
+            android:text="Mini Maxi" />
 
     </android.widget.LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
