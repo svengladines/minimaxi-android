@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.method.ScrollingMovementMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ public class AdventuresActivity extends AdventuresActivityBase {
         setContentView(R.layout.activity_adventures);
 
         // Attach the adapter to the recyclerview to populate items
-        RecyclerView adventuresRecyclerView
+        final RecyclerView adventuresRecyclerView
                 = (RecyclerView) findViewById(R.id.viewAdventures);
 
         adventuresRecyclerView.setAdapter(adapter);

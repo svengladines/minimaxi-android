@@ -33,8 +33,11 @@ public class ImageActivity extends Activity {
         Intent intent
                 = getIntent();
 
+        String mediaURL
+                = intent.getStringExtra("mediaURL");
+
         String url
-                = intent.getStringExtra("url");
+                = new StringBuilder("http://www.debrodders.be/svekke/minimaxi/media/adventures/images/").append( mediaURL ).toString();
 
         new DownloadImageTask( this ).execute( url );
 

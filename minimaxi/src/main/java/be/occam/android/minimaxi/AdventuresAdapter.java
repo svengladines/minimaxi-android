@@ -1,11 +1,13 @@
 package be.occam.android.minimaxi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -17,8 +19,10 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        protected Button messageButton;
+        protected ImageView mediaView;
         protected TextView titleTextView;
+        protected TextView descriptionTextView;
+        protected String mediaURL;
 
         public ViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
@@ -26,7 +30,8 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
             super(itemView);
 
             titleTextView = (TextView) itemView.findViewById(R.id.adventureTitle);
-            messageButton = (Button) itemView.findViewById(R.id.adventureButton);
+            descriptionTextView = (TextView) itemView.findViewById(R.id.adventureDescription);
+            mediaView = (ImageView) itemView.findViewById(R.id.adventureMedia);
 
         }
 
@@ -38,7 +43,7 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
 
     public AdventuresAdapter(Context context, List<Adventure> adventures) {
         this.adventureList = adventures;
-        context = context;
+        this.context = context;
     }
 
     private Context getContext() {
@@ -59,15 +64,34 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
 
     // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(AdventuresAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(final AdventuresAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
         Adventure adventure = this.adventureList.get(position);
 
         // Set item views based on your views and data model
         TextView textView = viewHolder.titleTextView;
         textView.setText(adventure.getTitle() );
-        Button button = viewHolder.messageButton;
-        button.setText("Details");
+        TextView descriptionTextView = viewHolder.descriptionTextView;
+        descriptionTextView.setText(adventure.getDescription() );
+        viewHolder.mediaURL = adventure.getMediaURL();
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    Intent intent
+                            = new Intent(context, ImageActivity.class);
+                    intent.putExtra("mediaURL", viewHolder.mediaURL);
+
+                    context.startActivity(intent);
+                }
+                catch( Throwable e ) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
     // Returns the total count of items in the list
