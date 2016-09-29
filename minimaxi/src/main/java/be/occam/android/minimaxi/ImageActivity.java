@@ -39,6 +39,8 @@ public class ImageActivity extends Activity {
         String url
                 = new StringBuilder("http://www.debrodders.be/svekke/minimaxi/media/adventures/images/").append( mediaURL ).toString();
 
+        this.updateStatusText("Downloading image...");
+
         new DownloadImageTask( this ).execute( url );
 
 
@@ -91,13 +93,16 @@ public class ImageActivity extends Activity {
                 return;
             }
 
-            this.updateStatusText( String.format("bitmap loaded: %s", bitmap.getHeight() ) );
+            this.updateStatusText( String.format("Image loaded: %s", bitmap.getHeight() ) );
 
             imageView.setImageBitmap( bitmap );
             imageView.invalidate();
             imageView.forceLayout();
+            imageView.setVisibility( View.VISIBLE );
 
-            this.updateStatusText( String.format("imageview updated" ) );
+            TextView titleText
+                    = (TextView) findViewById(R.id.descriptionText);
+            titleText.setVisibility( View.GONE );
         }
         catch( Throwable e ) {
             this.updateStatusText( e );
@@ -146,8 +151,7 @@ public class ImageActivity extends Activity {
         TextView titleText
                 = (TextView) findViewById(R.id.descriptionText);
 
-        titleText.setTextColor( Color.RED );
-        titleText.setText( String.format( "e: %s", text ) );
+        titleText.setText( String.format( "%s", text ) );
 
     }
 

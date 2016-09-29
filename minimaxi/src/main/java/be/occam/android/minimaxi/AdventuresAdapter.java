@@ -23,6 +23,7 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
         protected TextView titleTextView;
         protected TextView descriptionTextView;
         protected String mediaURL;
+        protected TextView dateTextView;
 
         public ViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
@@ -32,6 +33,7 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
             titleTextView = (TextView) itemView.findViewById(R.id.adventureTitle);
             descriptionTextView = (TextView) itemView.findViewById(R.id.adventureDescription);
             mediaView = (ImageView) itemView.findViewById(R.id.adventureMedia);
+            this.dateTextView = (TextView) itemView.findViewById(R.id.adventureDate);
 
         }
 
@@ -55,7 +57,7 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View adventureView = inflater.inflate(R.layout.item_adventure, parent, false);
+        View adventureView = inflater.inflate(R.layout.card_adventure, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(adventureView);
@@ -74,24 +76,31 @@ public class AdventuresAdapter extends RecyclerView.Adapter<AdventuresAdapter.Vi
         TextView descriptionTextView = viewHolder.descriptionTextView;
         descriptionTextView.setText(adventure.getDescription() );
         viewHolder.mediaURL = adventure.getMediaURL();
+        viewHolder.dateTextView.setText( adventure.getDate() );
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if ( adventure.getMedia() != null ) {
 
-                try {
-                    Intent intent
-                            = new Intent(context, ImageActivity.class);
-                    intent.putExtra("mediaURL", viewHolder.mediaURL);
+            if ("img".equals(adventure.getMedia())) {
+                viewHolder.mediaView.setVisibility(View.VISIBLE);
 
-                    context.startActivity(intent);
-                }
-                catch( Throwable e ) {
-                    e.printStackTrace();
-                }
+                viewHolder.mediaView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
+                        try {
+                            Intent intent
+                                    = new Intent(context, ImageActivity.class);
+                            intent.putExtra("mediaURL", viewHolder.mediaURL);
+
+                            context.startActivity(intent);
+                        } catch (Throwable e) {
+                            e.printStackTrace();
+                        }
+
+                        }
+                });
             }
-        });
+        }
     }
 
     // Returns the total count of items in the list
